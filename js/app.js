@@ -21,6 +21,17 @@ const leftImage = document.getElementById('leftImage');
 const centerImage = document.getElementById('centerImage');
 const rightImage = document.getElementById('rightImage');
 
+function viewResults() {
+  let list = document.getElementById('results');
+
+  for (let i = 0; i < Images.all.length; i++) {
+    const listElements = document.createElement('li');
+    list.appendChild(listElements);
+    listElements.textContent = Images.all[i].name + ' had ' + Images.all[i].clicks + ' votes, and was seen ' + Images.all[i].shown + ' times.';
+
+  }
+}
+
 let clickNumber = 0;
 let leftImageIndex = 0;
 let centerImageIndex = 0;
@@ -99,18 +110,3 @@ function randomNumber(min, max) {
 
 imageSection.addEventListener('click', eventHandler);
 renderImages();
-
-
-var headerData = ['Item', 'Views', 'Clicks', '% of Clicks when Viewed', 'Recommended?'];
-function theTable() {
-  document.getElementById('theTable');
-
-/* Header */
-var tableRow = document.createElement('tr');
-
-for (var i = 0; i < headerData.length; i++) {
-  var tableHeader = document.createElement('th');
-  tableHeader.textContent = headerData[i];
-  tableRow.appendChild(tableHeader);
-}
-}
