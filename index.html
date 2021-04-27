@@ -1,5 +1,6 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,81 +9,51 @@
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
   <section class="container">
     <header>
-      <img src="./img/logo.png" alt="" class="logo">
-      <nav>
-        <a href="">Home</a>
-        <a href="">About</a>
-        <a href="">Contact</a>
-      </nav>
+      <div>
+        <img src="./img/logo.png" alt="" class="logo">
+        <h1> BusMall </h1>
+      </div>
+      <div>
+        <nav>
+          <a href="">Home</a>
+          <a href="">About</a>
+          <a href="">Contact</a>
+        </nav>
+      </div>
     </header>
 
     <main>
+      <h2 id="h2">Please select the image you would purchase over the others:</h2>
       <section class="image-section" id="imageSection">
         <img src="" alt="" id="leftImage">
+        <img src="" alt="" id="centerImage">
         <img src="" alt="" id="rightImage">
       </section>
+
+      <div class="container">
+        <div class="center">
+
+          <button onclick="theaTable()">View Results</button>
+
+          <table id="results"></table>
+        </div>
+      </div>
+
+
     </main>
-    
+
     <footer>
       <p>all right reserve 2020&copy;</p>
     </footer>
   </section>
 
-  <script src="js/app.js"></script>
+  <script src="./js/app.js"></script>
 
 </body>
-</html> -->
 
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html> -->
-<html>
-
-<head>
-    <title>Bus Mall</title>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body>
-    <header>Bus Mall</header>
-    <main>
-        <section id="container">
-            <div>
-                <img id="left-busmall-image" src="img/bag.jpg" alt="bag">
-                <h2 id="left-busmall-title">Bag</h2>
-            </div>
-            <div>
-                <img id="center-busmall-image" src="img/banana.jpg" alt="banana">
-                <h2 id="center-busmall-title">Banana</h2>
-            </div>
-            <div>
-                <img id="right-busmall-image" src="img/bathroom.jpg" alt="bag">
-                <h2 id="right-busmall-title">Bathroom</h2>
-            </div>
-            <p id="report-sen"></p>
-            <button><a href="html.html"></a></button>
-
-
-            <canvas id="myChart"></canvas>
-
-            <footer>
-
-            </footer>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-            <script src="./js/app.js"></script>
-    </main>
-</body>
-
-</html> -->
+</html>
