@@ -72,13 +72,13 @@ header nav a:hover::after {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   background: #eee;
-  height: 100%;
+  height: 50%;
   padding: 20px;
 }
 
 .image-section img {
   max-width: 100%;
-  height: 400px;
+  height: 100%;
   border: 10px solid 	#262d35;
   border-radius: 5%;
   cursor: pointer;
@@ -87,54 +87,24 @@ img:hover {
   border-color: #7FFF00;
 }
 
-ul {
-  width: 960px;
-  margin: 0px auto;
-  line-height: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-li {
-  display: inline-block;
-  font-size: 20px;
-}
-
-.container { 
-  height: 200px;
-  position: relative;
-}
-
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
 button {
   width: 100px;
   height: 50px;
 }
 
+#results li{
+  display: inline-block;
+  width: 960px;
+  padding-top: 13px;
+  padding-bottom: 10px;
+  background-color: rgb(250, 235, 235);
+  text-align: center;
+  
+}
 footer {
   display: flex;
   align-items: center;
   background: #222831;
   color: #eee;
   text-align: center;
-}
-
-footer p {
-  width: 100%;
-  text-transform: capitalize;
-}
-footer {
-  clear: both;
-  position: relative;
-  height: 50px;
-  margin-top: 200px;
 }
