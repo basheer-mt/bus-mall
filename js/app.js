@@ -33,6 +33,7 @@ function viewResults() {
   renderChart();
 }
 
+
 let clickNumber = 0;
 let leftImageIndex = 0;
 let centerImageIndex = 0;
@@ -69,7 +70,17 @@ function eventHandler(e) {
     if (e.target.id === 'rightImage') {
       Images.all[rightImageIndex].clicks++;
       console.log(rightImageIndex);
+
+
+
     }
+
+    // convert data to string to local storage
+    let stringyArr = JSON.stringify(Images.all);
+    localStorage.setItem('names', stringyArr);
+
+
+
 
 
 
@@ -127,6 +138,7 @@ function renderChart() {
         label: '# of Votes',
         data: clicks,
         backgroundColor: [
+
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
           'rgba(255, 206, 86, 0.2)',
@@ -156,5 +168,26 @@ function renderChart() {
 
 }
 
-imageSection.addEventListener('click', eventHandler);
-renderImages();
+
+
+// ======= convert data back to object for use ======== //
+let dataFromLocalStorage = localStorage.getItem('names');
+let parsedImages = JSON.parse(dataFromLocalStorage);
+
+if (parsedImages !== null) {
+  for (var i = 0; i < parsedImages.length; i++) {
+    var reconstitutedProduct = new Images(parsedImages[i].name, parsedImages[i].img);
+    reconstitutedProduct.clicks = parsedImages[i].clicks;
+    reconstitutedProduct.showns = parsedImages[i].shown;
+  }
+  viewResults();
+  renderChart();
+} else {
+
+
+
+
+
+  imageSection.addEventListener('click', eventHandler);
+  renderImages();
+}
