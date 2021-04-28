@@ -33,6 +33,7 @@ function viewResults() {
   renderChart();
 }
 
+
 let clickNumber = 0;
 let leftImageIndex = 0;
 let centerImageIndex = 0;
@@ -69,7 +70,17 @@ function eventHandler(e) {
     if (e.target.id === 'rightImage') {
       Images.all[rightImageIndex].clicks++;
       console.log(rightImageIndex);
+
+
+
     }
+
+    // convert data to string to local storage
+    let stringyArr = JSON.stringify(Images.all);
+    localStorage.setItem('names', stringyArr);
+
+
+
 
 
 
@@ -113,48 +124,97 @@ function renderChart() {
 
   let clicks = [];
   let names = [];
-  for (let i=0; i < Images.all.length; i++){
-    clicks.push(Images.all[i.clicks]);
+  for (let i = 0; i < Images.all.length; i++) {
+    clicks.push(Images.all[i].clicks);
     names.push(Images.all[i].name);
   }
 
   var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+  var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: names,
-        datasets: [{
-            label: '# of Votes',
-            data: clicks,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+      labels: names,
+      datasets: [{
+        label: '# of Votes',
+        data: clicks,
+        backgroundColor: [
+          'rgba(255, 99, 139, 1)',
+          'rgba(54, 162, 235, .9)',
+          'rgba(255, 206, 88, .8)',
+          'rgba(75, 192, 89, 1)',
+          'rgba(153, 102, 25, .9)',
+          'rgba(25, 159, 64, .8)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, .7)',
+          'rgba(255, 206, 88.8)',
+          'rgba(175, 192, 92, 1)',
+          'rgba(153, 102, 255,.9)',
+          'rgba(255, 159, 64,.8)',
+          'rgba(255, 199, 132, 1)',
+          'rgba(54, 162, 235, .8)',
+          'rgba(255, 206, 88, .9)',
+          'rgba(175, 192, 192, 11)',
+          'rgba(153, 102, 255, .9)',
+          'rgba(255, 159, 64, .8)',
+          'rgba(255, 99, 132,1)',
+          'rgba(54, 162, 235.9)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 139, 1)',
+          'rgba(54, 162, 235, .9)',
+          'rgba(255, 206, 88, .8)',
+          'rgba(75, 192, 89, 1)',
+          'rgba(153, 102, 25, .9)',
+          'rgba(25, 159, 64, .8)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, .7)',
+          'rgba(255, 206, 88.8)',
+          'rgba(175, 192, 92, 1)',
+          'rgba(153, 102, 255,.9)',
+          'rgba(255, 159, 64,.8)',
+          'rgba(255, 199, 132, 1)',
+          'rgba(54, 162, 235, .8)',
+          'rgba(255, 206, 88, .9)',
+          'rgba(175, 192, 192, 11)',
+          'rgba(153, 102, 255, .9)',
+          'rgba(255, 159, 64, .8)',
+          'rgba(255, 99, 132,1)',
+          'rgba(54, 162, 235.9)',
+        ],
+        borderWidth: 1
+      }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+      scales: {
+        y: {
+          beginAtZero: true
         }
+      }
     }
-});
+  });
 
 }
 
-imageSection.addEventListener('click', eventHandler);
-renderImages();
+
+
+// ======= convert data back to object for use ======== //
+let dataFromLocalStorage = localStorage.getItem('names');
+let parsedImages = JSON.parse(dataFromLocalStorage);
+
+if (parsedImages !== null) {
+  for (var i = 0; i < parsedImages.length; i++) {
+    var reconstitutedProduct = new Images(parsedImages[i].name, parsedImages[i].img);
+    reconstitutedProduct.clicks = parsedImages[i].clicks;
+    reconstitutedProduct.showns = parsedImages[i].shown;
+  }
+  viewResults();
+  renderChart();
+} else {
+
+
+
+
+
+  imageSection.addEventListener('click', eventHandler);
+  renderImages();
+}
